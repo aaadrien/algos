@@ -4,26 +4,41 @@ import java.lang.Math;
 
 public class MaxPairwiseProduct {
     static int getMaxPairwiseProduct(int[] numbers) {
-        int max_product = 0;
+        int maxProduct = 0;
         int n = numbers.length;
 
         for (int first = 0; first < n; ++first) {
             for (int second = first + 1; second < n; ++second) {
-                max_product = Math.max(max_product, numbers[first] * numbers[second]);
+                maxProduct = Math.max(maxProduct, numbers[first] * numbers[second]);
             }
         }
 
-        return max_product;
+        return maxProduct;
+    }
+
+    static long getFastMaxPairwiseProduct(long[] numbers) {
+        long maxProduct = 0;
+        long n = numbers.length;
+
+        for (int first = 0; first < n; ++first) {
+            for (int second = first + 1; second < n; ++second) {               
+
+                maxProduct = Math.max(maxProduct, numbers[first] * numbers[second]);
+            }
+        }
+
+        return maxProduct;
     }
 
     public static void main(String[] args) {
         FastScanner scanner = new FastScanner(System.in);
         int n = scanner.nextInt();
-        int[] numbers = new int[n];
+        long[] numbers = new long[n];
+
         for (int i = 0; i < n; i++) {
-            numbers[i] = scanner.nextInt();
+            numbers[i] = scanner.nextLong();
         }
-        System.out.println(getMaxPairwiseProduct(numbers));
+        System.out.println(getFastMaxPairwiseProduct(numbers));
     }
 
     static class FastScanner {
@@ -32,8 +47,7 @@ public class MaxPairwiseProduct {
 
         FastScanner(InputStream stream) {
             try {
-                br = new BufferedReader(new
-                    InputStreamReader(stream));
+                br = new BufferedReader(new InputStreamReader(stream));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -52,6 +66,10 @@ public class MaxPairwiseProduct {
 
         int nextInt() {
             return Integer.parseInt(next());
+        }
+
+        long nextLong() {
+            return Long.parseLong(next());
         }
     }
 
