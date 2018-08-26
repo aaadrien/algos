@@ -17,17 +17,29 @@ public class MaxPairwiseProduct {
     }
 
     static long getFastMaxPairwiseProduct(long[] numbers) {
-        long maxProduct = 0;
+        long firstMax = 0;
+        int firstMaxIndex = 0;
+
+        long secondMax = 0;
+
         long n = numbers.length;
 
         for (int first = 0; first < n; ++first) {
-            for (int second = first + 1; second < n; ++second) {               
 
-                maxProduct = Math.max(maxProduct, numbers[first] * numbers[second]);
+            if (numbers[first] > firstMax) {
+                firstMax = numbers[first];
+                firstMaxIndex = first;
             }
         }
 
-        return maxProduct;
+        for (int second = 0; second < n; ++second) {
+
+            if (numbers[second] > secondMax && firstMaxIndex != second) {
+                secondMax = numbers[second];
+            }
+        }
+
+        return firstMax * secondMax;
     }
 
     public static void main(String[] args) {
