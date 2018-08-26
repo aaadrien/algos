@@ -14,11 +14,24 @@ public class GCD {
     return current_gcd;
   }
 
+  private static int euclideanGCD(int a, int b) {
+    int aPrime = 0;
+    
+    if (b == 0) {
+      return a;
+    } else {
+      aPrime = a % b; 
+    }        
+
+    return euclideanGCD(b, aPrime);
+  }
+
   public static void main(String args[]) {
     Scanner scanner = new Scanner(System.in);
     int a = scanner.nextInt();
     int b = scanner.nextInt();
 
-    System.out.println(gcd_naive(a, b));
+    // System.out.println(gcd_naive(a, b));
+    System.out.println(euclideanGCD(a, b));
   }
 }
