@@ -8,10 +8,48 @@ public class Fibonacci {
     return calc_fib(n - 1) + calc_fib(n - 2);
   }
 
-  public static void main(String args[]) {
-    Scanner in = new Scanner(System.in);
-    int n = in.nextInt();
+  private static long calcFibList(int n) {
+    long[] sums = new long[n + 2];
 
-    System.out.println(calc_fib(n));
+    sums[0] = 0;
+    sums[1] = 1;
+
+    // n = n + 1;
+
+    for (int i = 2; i < n; i++) {
+      sums[i] = sums[i-1] + sums[i-2];
+      // System.out.println(" i " + i + " sumsi " + sums[i]);
+      // System.out.println("n " + n);
+      // System.out.println("i <= n " + (i <= n));
+    }
+
+    // for (long sum : sums){
+    //   System.out.println("sum " + sum);
+    // }
+
+    return sums[n];
+  }
+
+  private static void runTests() {
+    System.out.println("running tests..");
+
+    // assert calcFibList(7) == calc_fib(7) : "4 wrong ";
+    System.out.println("calcFibList(7)" + calcFibList(7));
+    System.out.println("calc_fib" + calc_fib(7));
+
+    // assert calcFibList(7) == 21 : "7 wrong " + calcFibList(7);  
+    // assert calcFibList(0) == 0 : "0 wrong " + calcFibList(0);
+    // assert calcFibList(11) == 144 : "11 wrong " + calcFibList(11);
+
+    System.out.println("tests passed");
+  }
+
+  public static void main(String args[]) {
+    // Scanner in = new Scanner(System.in);
+    // int n = in.nextInt();
+
+    // System.out.println(calc_fib(n));
+    runTests();
+    // System.out.println(calcFibList(n));
   }
 }
