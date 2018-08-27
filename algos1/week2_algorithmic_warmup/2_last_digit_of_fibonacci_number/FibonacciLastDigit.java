@@ -16,6 +16,12 @@ public class FibonacciLastDigit {
 
         return current % 10;
     }
+
+    private static int getFibonacciLastDigit(int n) {
+	
+        
+	return sums[n] % 10;
+    }
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
