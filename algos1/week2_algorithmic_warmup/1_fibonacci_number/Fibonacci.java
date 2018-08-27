@@ -9,23 +9,14 @@ public class Fibonacci {
   }
 
   private static long calcFibList(int n) {
-    long[] sums = new long[n + 2];
+    long[] sums = new long[n + 1];
 
     sums[0] = 0;
     sums[1] = 1;
 
-    // n = n + 1;
-
-    for (int i = 2; i < n; i++) {
+    for (int i = 2; i <= n; i++) {
       sums[i] = sums[i-1] + sums[i-2];
-      // System.out.println(" i " + i + " sumsi " + sums[i]);
-      // System.out.println("n " + n);
-      // System.out.println("i <= n " + (i <= n));
     }
-
-    // for (long sum : sums){
-    //   System.out.println("sum " + sum);
-    // }
 
     return sums[n];
   }
@@ -45,11 +36,11 @@ public class Fibonacci {
   }
 
   public static void main(String args[]) {
-    // Scanner in = new Scanner(System.in);
-    // int n = in.nextInt();
+     Scanner in = new Scanner(System.in);
+     int n = in.nextInt();
 
     // System.out.println(calc_fib(n));
-    runTests();
-    // System.out.println(calcFibList(n));
+    // runTests();
+     System.out.println(calcFibList(n));
   }
 }
